@@ -83,8 +83,10 @@ function buildCharts(sample) {
     // 7. Create the yticks for the bar chart.
     // Hint: Get the the top 10 otu_ids and map them in descending order  
     //  so the otu_ids with the most bacteria are last. 
-
     var yticks = otu_idsSliced
+
+    // Create a variable to hold washing frequencies
+    //var wfreq = parseFloat(metadata.wfreq);
 
     // 8. Create the trace for the bar chart. 
     var barData = [{
@@ -117,7 +119,7 @@ function buildCharts(sample) {
       y: sample_values,
       text: otu_labels,
       mode: "markers",
-      maker: {
+      marker: {
         size: sample_values,
         color: otu_ids,
         colorscale: "Purples"
@@ -128,6 +130,8 @@ function buildCharts(sample) {
     var bubbleLayout = [{
       title: "Bacteria Cultures Per Sample",
       xaxis: {title: "OTU ID"},
+      height: 600,
+      width: 600,
       hovermode: otu_labels
       }];
 
@@ -141,7 +145,7 @@ function buildCharts(sample) {
       title: {
         text: "<b>Belly Button Washing Frequency</b><br>Scrubs Per Week"
       },
-      value: washfreq,
+      value: wfreq,
       type: "indicator",
       mode: "gauge+number",
       gauge: {
